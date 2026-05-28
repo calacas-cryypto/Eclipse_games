@@ -3,158 +3,120 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EclipseMC</title>
+<title>EclipseMC v1.3</title>
 <style>
   :root {
     --bg: #0A0A0F; --card: #141420; --text: #FFFFFF; --primary: #FF0033; --sub: #8B8BA7;
     --gold: #FFD700; --red-dark: #2A0008; --border: #222; --font-size: 16px;
   }
-  /* MODO CLARO */
-  body.light-mode {
-    --bg: #F5F5F7; --card: #FFFFFF; --text: #1A1A1A; --sub: #6B6B7B;
-    --red-dark: #FFE5E9; --border: #E0E0;
-  }
-  /* MODO RGB ACTIVADO */
-  body.rgb-mode {
-    --primary: #00FFFF;
-  }
-  body.rgb-mode .cookies-btn,
-  body.rgb-mode .btn-accept,
-  body.rgb-mode .social-btn.share,
-  body.rgb-mode .theme-toggle,
-  body.rgb-mode .rgb-toggle,
-  body.rgb-mode .font-btn {
+  body.light-mode { --bg: #F5F5F7; --card: #FFFFFF; --text: #1A1A1A; --sub: #6B6B7B; --red-dark: #FFE5E9; --border: #E0E0E0; }
+  body.rgb-mode { --primary: #00FFFF; }
+  body.rgb-mode .cookies-btn, body.rgb-mode .btn-accept, body.rgb-mode .social-btn.share,
+  body.rgb-mode .theme-toggle, body.rgb-mode .rgb-toggle, body.rgb-mode .font-btn {
     background: linear-gradient(45deg, #FF0000, #FF7F00, #FFFF00, #00FF00, #0000FF, #4B0082, #9400D3);
-    background-size: 400% 400%;
-    animation: rgbShift 3s ease infinite;
-    box-shadow: 0 0 25px rgba(255,0,255,0.6);
+    background-size: 400% 400%; animation: rgbShift 3s ease infinite; box-shadow: 0 0 25px rgba(255,0,255,0.6);
   }
-  body.rgb-mode .cookies-box h2,
-  body.rgb-mode .section-title,
-  body.rgb-mode h1, body.rgb-mode h2, body.rgb-mode h3 {
+  body.rgb-mode .cookies-box h2, body.rgb-mode .section-title, body.rgb-mode h1, body.rgb-mode h2, body.rgb-mode h3 {
     background: linear-gradient(45deg, #FF0000, #FF7F00, #FFFF00, #00FF00, #0000FF, #4B0082, #9400D3);
-    background-size: 400% 400%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: rgbShift 3s ease infinite;
+    background-size: 400% 400%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: rgbShift 3s ease infinite;
   }
-  body.rgb-mode .mod-card {
-    border: 2px solid transparent;
-    background: linear-gradient(var(--card), var(--card)) padding-box,
+  body.rgb-mode .mod-card { border: 2px solid transparent; background: linear-gradient(var(--card), var(--card)) padding-box,
                 linear-gradient(45deg, #FF0000, #FF7F00, #FFFF00, #00FF00, #0000FF, #4B0082, #9400D3) border-box;
-    background-size: 400% 400%;
-    animation: rgbShift 3s ease infinite;
-  }
-  body.rgb-mode .nav-item.active {
-    background: linear-gradient(45deg, #FF0000, #FF7F00, #FFFF00, #00FF00, #0000FF, #4B0082, #9400D3);
-    background-size: 400% 400%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: rgbShift 3s ease infinite;
-  }
-  /* CRÉDITOS RGB */
-  body.rgb-mode .creditos-rgb strong,
-  body.rgb-mode .creditos-rgb a {
-    background: linear-gradient(45deg, #FF0000, #FF7F00, #FFFF00, #00FF00, #0000FF, #4B0082, #9400D3);
-    background-size: 400% 400%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: rgbShift 3s ease infinite;
-    font-weight: bold;
-  }
-  body.rgb-mode .creditos-rgb {
-    border: 2px solid transparent;
-    background: linear-gradient(var(--bg), var(--bg)) padding-box,
-                linear-gradient(45deg, #FF0000, #FF7F00, #FFFF00, #00FF00, #0000FF, #4B0082, #9400D3) border-box;
-    background-size: 400% 400%;
-    animation: rgbShift 3s ease infinite;
-    border-radius: 12px;
-    padding: 20px 10px !important;
-  }
-  @keyframes rgbShift { 
-    0% { background-position: 0% 50%; } 
-    50% { background-position: 100% 50%; } 
-    100% { background-position: 0% 50%; } 
-  }
+    background-size: 400% 400%; animation: rgbShift 3s ease infinite; }
+  body.rgb-mode .nav-item.active { background: linear-gradient(45deg, #FF0000, #FF7F00, #FFFF00, #00FF00, #0000FF, #4B0082, #9400D3);
+    background-size: 400% 400%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: rgbShift 3s ease infinite; }
+  @keyframes rgbShift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
 
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
   body { background: var(--bg); color: var(--text); overflow-x: hidden; transition: 0.3s; font-size: var(--font-size); }
 
-  /* COOKIES PANTALLA COMPLETA */
- .cookies-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg); z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 20px; }
- .cookies-box { background: var(--card); padding: 30px; border-radius: 20px; max-width: 400px; text-align: center; box-shadow: 0 0 30px rgba(255,0,51,0.3); }
- .cookies-box h2 { color: var(--primary); margin-bottom: 15px; }
- .cookies-box p { font-size: 0.875em; line-height: 1.5; margin-bottom: 20px; color: var(--sub); }
- .cookies-box.warning { color: #FFA500; font-weight: bold; }
- .cookies-btn { width: 100%; padding: 15px; background: var(--primary); border: none; border-radius: 12px; color: white; font-weight: bold; cursor: pointer; box-shadow: 0 0 20px var(--primary); animation: glow 2s infinite; }
+  .cookies-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg); z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 20px; }
+  .cookies-box { background: var(--card); padding: 30px; border-radius: 20px; max-width: 400px; text-align: center; box-shadow: 0 0 30px rgba(255,0,51,0.3); }
+  .cookies-box h2 { color: var(--primary); margin-bottom: 15px; }
+  .cookies-box p { font-size: 0.875em; line-height: 1.5; margin-bottom: 20px; color: var(--sub); }
+  .cookies-btn { width: 100%; padding: 15px; background: var(--primary); border: none; border-radius: 12px; color: white; font-weight: bold; cursor: pointer; box-shadow: 0 0 20px var(--primary); animation: glow 2s infinite; }
   @keyframes glow { 0%,100% { box-shadow: 0 0 20px var(--primary); } 50% { box-shadow: 0 0 40px var(--primary); } }
 
-  /* MODAL NOTIFICACIONES */
- .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 9998; align-items: center; justify-content: center; }
- .modal.active { display: flex; }
- .modal-content { background: var(--card); padding: 25px; border-radius: 20px; text-align: center; max-width: 350px; }
- .modal-btns { display: flex; gap: 10px; margin-top: 20px; }
- .btn-accept { flex: 1; padding: 12px; background: var(--primary); border: none; border-radius: 10px; color: white; font-weight: bold; box-shadow: 0 0 15px var(--primary); }
- .btn-deny { flex: 1; padding: 12px; background: #333; border: none; border-radius: 10px; color: white; }
+  .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 9998; align-items: center; justify-content: center; }
+  .modal.active { display: flex; }
+  .modal-content { background: var(--card); padding: 25px; border-radius: 20px; text-align: center; max-width: 350px; }
+  .modal-btns { display: flex; gap: 10px; margin-top: 20px; }
+  .btn-accept { flex: 1; padding: 12px; background: var(--primary); border: none; border-radius: 10px; color: white; font-weight: bold; box-shadow: 0 0 15px var(--primary); }
+  .btn-deny { flex: 1; padding: 12px; background: #333; border: none; border-radius: 10px; color: white; }
 
-  /* MENU INFERIOR FIJO */
- .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: var(--card); display: flex; justify-content: space-around; padding: 10px 0; z-index: 100; border-top: 1px solid var(--border); }
- .nav-item { text-align: center; font-size: 0.688em; color: var(--sub); cursor: pointer; transition: 0.2s; flex: 1; }
- .nav-item.active { color: var(--primary); transform: scale(1.1); }
- .nav-item span { font-size: 1.375em; display: block; }
+  /* MODAL DETALLES CON FIX SCROLL */
+  .modal-detalle .modal-content { max-width: 600px; width: 90%; max-height: 90vh; display: flex; flex-direction: column; text-align: left; }
+  .modal-header { flex-shrink: 0; padding: 15px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+  .modal-body { overflow-y: auto; flex: 1; padding: 15px; -webkit-overflow-scrolling: touch; }
+  .modal-footer { flex-shrink: 0; padding: 15px; border-top: 1px solid var(--border); background: var(--card); position: sticky; bottom: 0; }
+  .modal-body::-webkit-scrollbar { width: 6px; }
+  .modal-body::-webkit-scrollbar-thumb { background: #555; border-radius: 3px; }
+  .close { font-size: 28px; cursor: pointer; }
 
-  /* CONTENIDO PRINCIPAL */
- .main-content { padding: 20px; padding-bottom: 80px; display: none; }
- .main-content.active { display: block; animation: fadeIn 0.3s; }
+  .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: var(--card); display: flex; justify-content: space-around; padding: 10px 0; z-index: 100; border-top: 1px solid var(--border); }
+  .nav-item { text-align: center; font-size: 0.688em; color: var(--sub); cursor: pointer; transition: 0.2s; flex: 1; }
+  .nav-item.active { color: var(--primary); transform: scale(1.1); }
+  .nav-item span { font-size: 1.375em; display: block; }
+
+  .main-content { padding: 20px; padding-bottom: 80px; display: none; }
+  .main-content.active { display: block; animation: fadeIn 0.3s; }
   @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-  /* CARDS DE MODS */
- .section-title { font-size: 1.25em; margin: 20px 0 15px 0; display: flex; align-items: center; gap: 8px; }
- .mods-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
- .mod-card { background: var(--card); border-radius: 16px; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.4); transition: 0.3s; cursor: pointer; position: relative; }
- .mod-card:active { transform: scale(0.95); box-shadow: 0 4px 10px rgba(255,0,51,0.5); }
- .mod-card img { width: 100%; height: 110px; object-fit: cover; }
- .mod-body { padding: 12px; }
- .mod-title { font-size: 0.938em; margin-bottom: 5px; padding-right: 25px; }
- .mod-stats { font-size: 0.75em; color: var(--sub); }
- .fav-btn { position: absolute; top: 8px; right: 8px; background: rgba(0,0,0,0.6); border: none; border-radius: 50%; width: 32px; height: 32px; font-size: 18px; cursor: pointer; transition: 0.2s; z-index: 2; }
- .fav-btn.active { color: var(--primary); transform: scale(1.2); }
+  .section-title { font-size: 1.25em; margin: 20px 0 15px 0; display: flex; align-items: center; gap: 8px; }
+  .mods-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+  .mod-card { background: var(--card); border-radius: 16px; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.4); transition: 0.3s; cursor: pointer; position: relative; 
+    content-visibility: auto; contain-intrinsic-size: 280px; }
+  .mod-card:active { transform: scale(0.95); box-shadow: 0 4px 10px rgba(255,0,51,0.5); }
+  .mod-card img { width: 100%; height: 110px; object-fit: cover; }
+  .mod-body { padding: 12px; }
+  .mod-title { font-size: 0.938em; margin-bottom: 5px; padding-right: 25px; }
+  .mod-stats { font-size: 0.75em; color: var(--sub); }
+  .fav-btn { position: absolute; top: 8px; right: 8px; background: rgba(0,0,0,0.6); border: none; border-radius: 50%; width: 32px; height: 32px; font-size: 18px; cursor: pointer; transition: 0.2s; z-index: 2; }
+  .fav-btn.active { color: var(--primary); transform: scale(1.2); }
 
-  /* AJUSTES */
- .settings-group { background: var(--card); border-radius: 16px; padding: 15px; margin-bottom: 15px; }
- .settings-item { padding: 15px 0; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
- .settings-item:last-child { border-bottom: none; }
- .theme-toggle, .rgb-toggle { padding: 8px 16px; background: var(--primary); border: none; border-radius: 8px; color: white; font-weight: bold; cursor: pointer; }
- .font-controls { display: flex; gap: 8px; align-items: center; }
- .font-btn { padding: 6px 12px; background: var(--primary); border: none; border-radius: 8px; color: white; font-weight: bold; cursor: pointer; font-size: 1em; }
- .font-size-display { min-width: 45px; text-align: center; font-weight: bold; color: var(--primary); }
+  .skeleton { background: var(--card); border-radius: 16px; overflow: hidden; }
+  .skeleton-img { height: 110px; background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%); background-size: 200% 100%; animation: loading 1.5s infinite; }
+  .skeleton-text { height: 14px; margin: 12px; background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%); background-size: 200% 100%; animation: loading 1.5s infinite; border-radius: 4px; }
+  @keyframes loading { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
 
-  /* REDES SOCIALES SECCIÓN ESPECIAL */
- .social-section { background: var(--red-dark); border-radius: 16px; padding: 20px; box-shadow: 0 0 25px rgba(255,0,51,0.2); margin-top: 20px; }
- .social-section h3 { color: var(--primary); text-align: center; margin-bottom: 15px; }
- .social-btn { width: 100%; padding: 15px; margin: 8px 0; border: none; border-radius: 12px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; }
- .wa-canal { background: #25D366; color: white; }
- .wa-grupo { background: #128C7E; color: white; }
- .ig { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: white; }
- .yt { background: #FF0000; color: white; }
- .share { background: var(--primary); color: white; }
+  .search-box { display: flex; gap: 10px; margin-bottom: 15px; }
+  .search-input { flex: 1; padding: 12px; background: var(--card); border: 1px solid var(--border); border-radius: 12px; color: var(--text); }
+  .filtros { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 10px; margin-bottom: 15px; }
+  .filtro-btn { padding: 8px 16px; background: var(--card); border: 1px solid var(--border); border-radius: 20px; color: var(--text); white-space: nowrap; cursor: pointer; }
+  .filtro-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
 
-  /* PREMIUM BADGE */
- .premium { color: var(--gold)!important; text-shadow: 0 0 10px var(--gold); animation: shimmer 2s infinite; }
-  @keyframes shimmer { 0%,100% { opacity: 1; } 50% { opacity: 0.7; } }
+  .settings-group { background: var(--card); border-radius: 16px; padding: 15px; margin-bottom: 15px; }
+  .settings-item { padding: 15px 0; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+  .settings-item:last-child { border-bottom: none; }
+  .theme-toggle, .rgb-toggle { padding: 8px 16px; background: var(--primary); border: none; border-radius: 8px; color: white; font-weight: bold; cursor: pointer; }
+  .font-controls { display: flex; gap: 8px; align-items: center; }
+  .font-btn { padding: 6px 12px; background: var(--primary); border: none; border-radius: 8px; color: white; font-weight: bold; cursor: pointer; font-size: 1em; }
+  .font-size-display { min-width: 45px; text-align: center; font-weight: bold; color: var(--primary); }
+  select { padding: 8px 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; color: var(--text); }
 
- .hidden { display: none!important; }
- .empty-state { text-align: center; padding: 40px 20px; color: var(--sub); }
+  .social-section { background: var(--red-dark); border-radius: 16px; padding: 20px; box-shadow: 0 0 25px rgba(255,0,51,0.2); margin-top: 20px; }
+  .social-section h3 { color: var(--primary); text-align: center; margin-bottom: 15px; }
+  .social-btn { width: 100%; padding: 15px; margin: 8px 0; border: none; border-radius: 12px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; }
+  .wa-canal { background: #25D366; color: white; }
+  .wa-grupo { background: #128C7E; color: white; }
+  .ig { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: white; }
+  .yt { background: #FF0000; color: white; }
+  .share { background: var(--primary); color: white; }
+
+  .hidden { display: none!important; }
+  .empty-state { text-align: center; padding: 40px 20px; color: var(--sub); }
+  .loading-more { text-align: center; padding: 20px; color: var(--sub); }
+  .creditos-rgb { text-align: center; padding: 20px 10px; color: var(--sub); font-size: 14px; border-top: 1px solid var(--border); margin-bottom: 70px; }
 </style>
 </head>
 <body>
 
-<!-- PANTALLA COOKIES OBLIGATORIA -->
+<!-- PANTALLA COOKIES -->
 <div class="cookies-screen" id="cookiesScreen">
   <div class="cookies-box">
     <h2>🌑 Bienvenido a EclipseMC</h2>
     <p>Usamos cookies para mejorar tu experiencia. Al continuar aceptas nuestras reglas.</p>
-    <p class="warning">⚠️ ADVERTENCIA DE SEGURIDAD:<br>No compartas información personal. No hables con desconocidos. El chat es para convivir con personas conocidas. <b>Nunca pediremos tu contraseña de usuario</b>.</p>
+    <p class="warning">⚠️ ADVERTENCIA: No compartas info personal. No hables con desconocidos.</p>
     <button class="cookies-btn" onclick="aceptarCookies()">ACEPTAR Y CONTINUAR</button>
   </div>
 </div>
@@ -163,7 +125,7 @@
 <div class="modal" id="notifModal">
   <div class="modal-content">
     <h3>🔔 ¿Activar Notificaciones?</h3>
-    <p style="color:var(--sub); margin:15px 0;">Recibe avisos de nuevos mods, mensajes, recompensas y eventos especiales.</p>
+    <p style="color:var(--sub); margin:15px 0;">Recibe avisos de nuevos mods y eventos.</p>
     <div class="modal-btns">
       <button class="btn-deny" onclick="rechazarNotif()">Rechazar</button>
       <button class="btn-accept" onclick="aceptarNotif()">Aceptar</button>
@@ -171,29 +133,52 @@
   </div>
 </div>
 
-<!-- CONTENIDO PRINCIPAL -->
-<div id="app" class="hidden">
+<!-- MODAL DETALLES MOD -->
+<div class="modal modal-detalle" id="modalDetalle">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3 id="modalTitulo">Mod</h3>
+      <span class="close" onclick="cerrarModal()">&times;</span>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+    <div class="modal-footer">
+      <button class="btn-accept" id="btnDescargar" style="width:100%;">⬇️ Descargar</button>
+    </div>
+  </div>
+</div>
 
-  <!-- INICIO -->
+<!-- APP -->
+<div id="app" class="hidden">
   <div class="main-content active" id="inicio">
     <h1 style="margin-bottom:20px;">🌑 EclipseMC</h1>
     <div class="section-title">🔥 Tendencias</div>
     <div class="mods-grid" id="modsGrid"></div>
+    <div class="loading-more" id="loadingMore" style="display:none;">Cargando más mods...</div>
   </div>
 
-  <!-- EXPLORAR -->
   <div class="main-content" id="explorar">
     <h2>🔎 Explorar</h2>
-    <p style="color:var(--sub);margin-top:20px;">Filtros por categoría: Terror, Aventura, PvP próximamente...</p>
+    <div class="search-box">
+      <input type="text" class="search-input" id="searchInput" placeholder="Buscar mods, mundos, shaders...">
+    </div>
+    <div class="filtros" id="filtros">
+      <button class="filtro-btn active" data-categoria="todos">Todos</button>
+      <button class="filtro-btn" data-categoria="addons">Addons</button>
+      <button class="filtro-btn" data-categoria="mundos">Mundos</button>
+      <button class="filtro-btn" data-categoria="shaders">Shaders</button>
+      <button class="filtro-btn" data-categoria="skins">Skins</button>
+      <button class="filtro-btn" data-categoria="texturas">Texturas</button>
+      <button class="filtro-btn" data-categoria="dlc">DLC</button>
+      <button class="filtro-btn" data-categoria="versiones">Versiones</button>
+    </div>
+    <div class="mods-grid" id="explorarGrid"></div>
   </div>
 
-  <!-- CHAT -->
   <div class="main-content" id="chat">
     <h2>💬 Chat</h2>
-    <p style="color:var(--sub);margin-top:20px;">Sistema de chat completo en desarrollo. Incluye mensajes, fotos, llamadas.</p>
+    <p style="color:var(--sub);margin-top:20px;">Sistema de chat completo en desarrollo.</p>
   </div>
 
-  <!-- PERFIL -->
   <div class="main-content" id="perfil">
     <h2>👤 Perfil</h2>
     <div class="settings-group">
@@ -202,30 +187,25 @@
     </div>
   </div>
 
-  <!-- FAVORITOS -->
   <div class="main-content" id="favoritos">
     <h2>❤️ Favoritos</h2>
     <div class="mods-grid" id="favsGrid"></div>
     <div class="empty-state" id="favsEmpty">
       <p style="font-size: 3em;">💔</p>
       <p>No tienes mods favoritos aún</p>
-      <p style="font-size: 0.75em; margin-top: 10px;">Toca el ❤️ en cualquier mod para guardarlo aquí</p>
     </div>
   </div>
 
-  <!-- RULETA -->
   <div class="main-content" id="ruleta">
     <h2>🎡 Ruleta</h2>
-    <p style="color:var(--sub);margin-top:20px;">Gira la ruleta para ganar Eclipse Coins. Sistema en desarrollo.</p>
+    <p style="color:var(--sub);margin-top:20px;">Gira la ruleta para ganar Eclipse Coins.</p>
   </div>
 
-  <!-- AJUSTES -->
   <div class="main-content" id="ajustes">
     <h2>⚙️ Ajustes</h2>
     <div class="settings-group">
       <div class="settings-item"><span>Idioma</span><span>Español</span></div>
       <div class="settings-item"><span>Vibración</span><span>Activada</span></div>
-      <div class="settings-item"><span>Sonido</span><span>Activado</span></div>
       <div class="settings-item"><span>Notificaciones</span><span>Activadas</span></div>
       <div class="settings-item">
         <span>Tamaño de Letra</span>
@@ -243,9 +223,18 @@
         <span>Modo RGB</span>
         <button class="rgb-toggle" onclick="cambiarRGB()" id="rgbBtn">🌈 Activar</button>
       </div>
+      <div class="settings-item">
+        <span>Optimización</span>
+        <select id="gamaSelect" onchange="cambiarGamaManual()">
+          <option value="auto">Auto (Recomendado)</option>
+          <option value="baja">Gama Baja</option>
+          <option value="media">Gama Media</option>
+          <option value="alta">Gama Alta</option>
+          <option value="premium">Premium</option>
+        </select>
+      </div>
     </div>
 
-    <!-- REDES SOCIALES Y COMUNIDAD -->
     <div class="social-section">
       <h3>🌐 REDES SOCIALES Y COMUNIDAD</h3>
       <button class="social-btn wa-canal" onclick="abrirRed('https://whatsapp.com/channel/0029VbC6kbNHrDZkaghwEl43')">📱 Canal WhatsApp</button>
@@ -256,23 +245,12 @@
     </div>
   </div>
 
-  <!-- CRÉDITOS ECLIPSEMC - RGB -->
-  <div class="creditos-rgb" style="text-align: center; padding: 20px 10px; color: var(--sub); font-size: 14px; border-top: 1px solid var(--border); margin-bottom: 70px;">
-    <p style="margin: 5px 0;">
-      <strong>EclipseMC</strong> © 2026
-    </p>
-    <p style="margin: 5px 0;">
-      Desarrollo y Diseño: EclipseMC Studios
-    </p>
-    <p style="margin: 5px 0;">
-      Contacto: <a href="mailto:albertano89v@gmail.com" style="text-decoration: none;">albertano89v@gmail.com</a>
-    </p>
-    <p style="margin: 5px 0; font-size: 12px;">
-      Minecraft es marca de Mojang Studios. Esta web no está afiliada a Mojang.
-    </p>
+  <div class="creditos-rgb">
+    <p style="margin: 5px 0;"><strong>EclipseMC</strong> © 2026</p>
+    <p style="margin: 5px 0;">Desarrollo: EclipseMC Studios</p>
+    <p style="margin: 5px 0;">Contacto: <a href="mailto:albertano89v@gmail.com">albertano89v@gmail.com</a></p>
   </div>
 
-  <!-- MENU INFERIOR -->
   <div class="bottom-nav">
     <div class="nav-item active" onclick="cambiarTab('inicio')"><span>🏠</span>Inicio</div>
     <div class="nav-item" onclick="cambiarTab('explorar')"><span>🔎</span>Explorar</div>
@@ -303,17 +281,52 @@
   const app = initializeApp(firebaseConfig);
   const db = getDatabase(app);
 
-  // ===== FAVORITOS LOCALSTORAGE =====
-  let favoritos = JSON.parse(localStorage.getItem('eclipseFavs') || '[]');
+  // ===== SISTEMA OPTIMIZACIÓN GAMA LOKYCRAFT STYLE =====
+  function detectarGama() {
+    const manual = localStorage.getItem('eclipseGama');
+    if(manual && manual !== 'auto') return manual;
+    const memoria = navigator.deviceMemory || 2;
+    const nucleos = navigator.hardwareConcurrency || 2;
+    const conexion = navigator.connection?.effectiveType || '4g';
+    let puntos = 0;
+    if(memoria >= 8) puntos += 3; else if(memoria >= 4) puntos += 2; else if(memoria >= 2) puntos += 1;
+    if(nucleos >= 8) puntos += 2; else if(nucleos >= 4) puntos += 1;
+    if(conexion === '4g' || conexion === '5g') puntos += 1;
+    if(puntos >= 6) return 'premium';
+    if(puntos >= 4) return 'alta';
+    if(puntos >= 2) return 'media';
+    return 'baja';
+  }
 
+  const GAMA = detectarGama();
+  document.body.setAttribute('data-gama', GAMA);
+  
+  const CONFIG = {
+    'baja': { modsInicial: 4, modsPorScroll: 4, imagenes: 'preview' },
+    'media': { modsInicial: 6, modsPorScroll: 6, imagenes: 'preview' },
+    'alta': { modsInicial: 8, modsPorScroll: 8, imagenes: 'original' },
+    'premium': { modsInicial: 12, modsPorScroll: 10, imagenes: 'original' }
+  }[GAMA];
+
+  // ===== VARIABLES GLOBALES =====
+  let favoritos = JSON.parse(localStorage.getItem('eclipseFavs') || '[]');
+  let todosLosMods = [];
+  let modsFiltrados = [];
+  let indiceActual = 0;
+  let indiceExplorar = 0;
+  let cargando = false;
+  let filtroActual = 'todos';
+  let busquedaActual = '';
+
+  // ===== SKELETON =====
+  const SKELETON = `<div class="skeleton"><div class="skeleton-img"></div><div class="skeleton-text"></div><div class="skeleton-text" style="width:60%"></div></div>`;
+
+  // ===== FAVORITOS LOCALSTORAGE =====
   window.toggleFavorito = function(modId, event) {
     event.stopPropagation();
     const index = favoritos.indexOf(modId);
-    if(index > -1) {
-      favoritos.splice(index, 1);
-    } else {
-      favoritos.push(modId);
-    }
+    if(index > -1) favoritos.splice(index, 1);
+    else favoritos.push(modId);
     localStorage.setItem('eclipseFavs', JSON.stringify(favoritos));
     actualizarCorazones();
     cargarFavoritos();
@@ -323,13 +336,8 @@
   function actualizarCorazones() {
     document.querySelectorAll('.fav-btn').forEach(btn => {
       const modId = btn.dataset.id;
-      if(favoritos.includes(modId)) {
-        btn.classList.add('active');
-        btn.innerHTML = '❤️';
-      } else {
-        btn.classList.remove('active');
-        btn.innerHTML = '🤍';
-      }
+      if(favoritos.includes(modId)) { btn.classList.add('active'); btn.innerHTML = '❤️'; }
+      else { btn.classList.remove('active'); btn.innerHTML = '🤍'; }
     });
   }
 
@@ -337,30 +345,18 @@
     const grid = document.getElementById('favsGrid');
     const empty = document.getElementById('favsEmpty');
     grid.innerHTML = '';
-    
-    if(favoritos.length === 0) {
-      empty.style.display = 'block';
-      return;
-    }
-    
+    if(favoritos.length === 0) { empty.style.display = 'block'; return; }
     empty.style.display = 'none';
-    onValue(ref(db, 'mods'), (snapshot) => {
-      const mods = snapshot.val();
-      if(mods) {
-        favoritos.forEach(favId => {
-          const mod = Object.values(mods).find(m => m.id === favId);
-          if(mod) {
-            grid.innerHTML += crearCardMod(mod);
-          }
-        });
-        actualizarCorazones();
-      }
-    }, { onlyOnce: true });
+    favoritos.forEach(favId => {
+      const mod = todosLosMods.find(m => m.id === favId);
+      if(mod) grid.innerHTML += crearCardMod(mod);
+    });
+    lazyLoadImagenes();
+    actualizarCorazones();
   }
 
   // ===== TAMAÑO DE LETRA =====
   let fontSize = parseInt(localStorage.getItem('eclipseFontSize') || '16');
-  
   window.cambiarTamanoLetra = function(cambio) {
     fontSize += cambio;
     if(fontSize < 12) fontSize = 12;
@@ -370,8 +366,6 @@
     localStorage.setItem('eclipseFontSize', fontSize);
     if(navigator.vibrate) navigator.vibrate(30);
   }
-
-  // Cargar tamaño guardado
   document.documentElement.style.setProperty('--font-size', fontSize + 'px');
   document.getElementById('fontSizeDisplay').textContent = fontSize + 'px';
 
@@ -390,10 +384,17 @@
     const esRGB = document.body.classList.contains('rgb-mode');
     document.getElementById('rgbBtn').innerHTML = esRGB ? '🌈 Desactivar' : '🌈 Activar';
     localStorage.setItem('eclipseRGB', esRGB ? 'on' : 'off');
-    if(navigator.vibrate) navigator.vibrate([50,50,50]);
+    if(navigator.vibrate) navigator.vibrate([50,50]);
   }
 
-  // Cargar temas guardados
+  // ===== GAMA MANUAL =====
+  window.cambiarGamaManual = function() {
+    const gama = document.getElementById('gamaSelect').value;
+    localStorage.setItem('eclipseGama', gama);
+    location.reload();
+  }
+  document.getElementById('gamaSelect').value = localStorage.getItem('eclipseGama') || 'auto';
+
   if(localStorage.getItem('eclipseTheme') === 'light') {
     document.body.classList.add('light-mode');
     document.getElementById('themeBtn').innerHTML = '☀️ Claro';
@@ -414,15 +415,13 @@
     document.getElementById('notifModal').classList.remove('active');
     document.getElementById('app').classList.remove('hidden');
     Notification.requestPermission();
-    cargarMods();
-    cargarFavoritos();
+    iniciarApp();
   }
 
   window.rechazarNotif = function() {
     document.getElementById('notifModal').classList.remove('active');
     document.getElementById('app').classList.remove('hidden');
-    cargarMods();
-    cargarFavoritos();
+    iniciarApp();
   }
 
   // ===== NAVEGACIÓN =====
@@ -432,18 +431,36 @@
     document.getElementById(tab).classList.add('active');
     event.currentTarget.classList.add('active');
     if(tab === 'favoritos') cargarFavoritos();
+    if(tab === 'explorar') renderExplorar();
     if(navigator.vibrate) navigator.vibrate(50);
+  }
+
+  // ===== LAZY LOAD IMÁGENES =====
+  function lazyLoadImagenes() {
+    const imgs = document.querySelectorAll('img[data-src]');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) {
+          const img = entry.target;
+          img.src = img.dataset.src;
+          img.removeAttribute('data-src');
+          observer.unobserve(img);
+        }
+      });
+    }, { rootMargin: '100px' });
+    imgs.forEach(img => observer.observe(img));
   }
 
   // ===== CREAR CARD DE MOD =====
   function crearCardMod(mod) {
     const esFav = favoritos.includes(mod.id);
+    const imgSrc = CONFIG.imagenes === 'preview' && mod.preview ? mod.preview : mod.imagen || 'https://via.placeholder.com/300x150/FF0033/FFFFFF?text=ECLIPSE';
     return `
       <div class="mod-card" onclick="abrirMod('${mod.id}')">
         <button class="fav-btn ${esFav ? 'active' : ''}" data-id="${mod.id}" onclick="toggleFavorito('${mod.id}', event)">
           ${esFav ? '❤️' : '🤍'}
         </button>
-        <img src="${mod.imagen || 'https://via.placeholder.com/300x150/FF0033/FFFFFF?text=ECLIPSE'}">
+        <img data-src="${imgSrc}" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E" loading="lazy">
         <div class="mod-body">
           <div class="mod-title">${mod.nombre}</div>
           <div class="mod-stats">⬇️ ${mod.descargas || 0} | ❤️ ${mod.likes || 0}</div>
@@ -452,36 +469,136 @@
     `;
   }
 
-  // ===== CARGAR MODS DESDE FIREBASE - ORDENADOS POR NUEVOS PRIMERO =====
-  function cargarMods() {
+  // ===== CARGAR MODS CON PAGINACIÓN =====
+  function cargarModsPaginados(reset = false) {
+    if(cargando) return;
+    cargando = true;
+    const grid = document.getElementById('modsGrid');
+    if(reset) {
+      indiceActual = 0;
+      grid.innerHTML = SKELETON.repeat(CONFIG.modsInicial);
+    }
+    document.getElementById('loadingMore').style.display = 'block';
+    setTimeout(() => {
+      if(reset) grid.innerHTML = '';
+      const fin = Math.min(indiceActual + CONFIG.modsPorScroll, todosLosMods.length);
+      for(let i = indiceActual; i < fin; i++) grid.innerHTML += crearCardMod(todosLosMods[i]);
+      indiceActual = fin;
+      document.getElementById('loadingMore').style.display = 'none';
+      lazyLoadImagenes();
+      actualizarCorazones();
+      cargando = false;
+    }, 300);
+  }
+
+  // ===== SCROLL INFINITO =====
+  window.addEventListener('scroll', () => {
+    if(document.getElementById('inicio').classList.contains('active')) {
+      if(window.innerHeight + window.scrollY >= document.body.offsetHeight - 500) {
+        if(indiceActual < todosLosMods.length) cargarModsPaginados();
+      }
+    }
+    if(document.getElementById('explorar').classList.contains('active')) {
+      if(window.innerHeight + window.scrollY >= document.body.offsetHeight - 500) {
+        if(indiceExplorar < modsFiltrados.length) renderExplorar(false);
+      }
+    }
+  });
+
+  // ===== BUSCADOR + FILTROS EXPLORAR =====
+  document.getElementById('searchInput').addEventListener('input', (e) => {
+    busquedaActual = e.target.value.toLowerCase();
+    filtrarExplorar();
+  });
+
+  document.querySelectorAll('.filtro-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      document.querySelectorAll('.filtro-btn').forEach(b => b.classList.remove('active'));
+      e.target.classList.add('active');
+      filtroActual = e.target.dataset.categoria;
+      filtrarExplorar();
+    });
+  });
+
+  function filtrarExplorar() {
+    modsFiltrados = todosLosMods.filter(mod => {
+      const matchCategoria = filtroActual === 'todos' || (mod.categoria && mod.categoria.toLowerCase() === filtroActual);
+      const matchBusqueda = mod.nombre.toLowerCase().includes(busquedaActual) || (mod.descripcion && mod.descripcion.toLowerCase().includes(busquedaActual));
+      return matchCategoria && matchBusqueda;
+    });
+    renderExplorar(true);
+  }
+
+  function renderExplorar(reset = true) {
+    const grid = document.getElementById('explorarGrid');
+    if(reset) {
+      indiceExplorar = 0;
+      grid.innerHTML = SKELETON.repeat(4);
+      setTimeout(() => {
+        grid.innerHTML = '';
+        const fin = Math.min(indiceExplorar + CONFIG.modsPorScroll, modsFiltrados.length);
+        for(let i = indiceExplorar; i < fin; i++) grid.innerHTML += crearCardMod(modsFiltrados[i]);
+        indiceExplorar = fin;
+        lazyLoadImagenes();
+        actualizarCorazones();
+      }, 300);
+    } else {
+      document.getElementById('loadingMoreExplorar').style.display = 'block';
+      setTimeout(() => {
+        const fin = Math.min(indiceExplorar + CONFIG.modsPorScroll, modsFiltrados.length);
+        for(let i = indiceExplorar; i < fin; i++) grid.innerHTML += crearCardMod(modsFiltrados[i]);
+        indiceExplorar = fin;
+        document.getElementById('loadingMoreExplorar').style.display = 'none';
+        lazyLoadImagenes();
+        actualizarCorazones();
+      }, 300);
+    }
+  }
+
+  // ===== MODAL DETALLES =====
+  window.abrirMod = function(modId) {
+    const mod = todosLosMods.find(m => m.id === modId);
+    if(!mod) return;
+    document.getElementById('modalTitulo').textContent = mod.nombre;
+    document.getElementById('modalBody').innerHTML = `
+      <p><strong>📁 Categoría:</strong> ${mod.categoria || 'Otro'}</p>
+      <p><strong>🎮 Versión:</strong> ${mod.version || '1.20'}</p>
+      <p><strong>⬇️ Tamaño:</strong> ${mod.size || '3.44 MB'}</p>
+      <p><strong>🖼️ Imágenes:</strong> ${mod.images || '4'}</p>
+      <p><strong>⬇️ Descargas:</strong> ${mod.descargas || 0}</p>
+      <p><strong>❤️ Likes:</strong> ${mod.likes || 0}</p>
+      <hr style="margin:15px 0;border-color:var(--border)">
+      <p><strong>📝 Descripción:</strong></p>
+      <p>${mod.descripcion || 'Sin descripción'}</p>
+    `;
+    document.getElementById('btnDescargar').onclick = () => {
+      window.open(mod.link, '_blank');
+      update(ref(db, 'mods/' + mod.key), { descargas: (mod.descargas || 0) + 1 });
+    };
+    document.getElementById('modalDetalle').classList.add('active');
+    if(navigator.vibrate) navigator.vibrate([50,50,50]);
+  }
+
+  window.cerrarModal = function() {
+    document.getElementById('modalDetalle').classList.remove('active');
+  }
+
+  // ===== INICIAR APP =====
+  function iniciarApp() {
+    document.getElementById('modsGrid').innerHTML = SKELETON.repeat(CONFIG.modsInicial);
     onValue(ref(db, 'mods'), (snapshot) => {
-      const grid = document.getElementById('modsGrid');
-      grid.innerHTML = '';
       const mods = snapshot.val();
       if(mods) {
         const modsArray = Object.entries(mods).map(([key, val]) => ({key,...val}));
-        modsArray.sort((a, b) => b.fecha - a.fecha); // Más recientes primero
-        modsArray.forEach(mod => {
+        modsArray.sort((a, b) => b.fecha - a.fecha);
+        todosLosMods = modsArray.map(mod => {
           if(!mod.id) mod.id = mod.nombre.replace(/\s+/g, '_');
-          grid.innerHTML += crearCardMod(mod);
+          return mod;
         });
-        actualizarCorazones();
+        modsFiltrados = [...todosLosMods];
+        cargarModsPaginados(true);
       }
     });
-  }
-
-  window.abrirMod = function(modId) {
-    onValue(ref(db, 'mods'), (snapshot) => {
-      const mods = snapshot.val();
-      const modEntry = Object.entries(mods).find(([key, m]) => m.id === modId || m.nombre === modId);
-      if(modEntry) {
-        const [key, mod] = modEntry;
-        // Aumentar contador de descargas al abrir
-        update(ref(db, 'mods/' + key), { descargas: (mod.descargas || 0) + 1 });
-        alert(`📦 ${mod.nombre}\n\n⬇️ File Size: ${mod.size || '3.44 MB'}\n🖼️ Gallery: ${mod.images || '4'} Images\n📁 Categoría: ${mod.categoria || 'Otro'}\n🎮 Versión: ${mod.version || '1.20'}\n\n${mod.descripcion || 'Sin descripción'}\n\n🔗 Link: ${mod.link}`);
-      }
-    }, { onlyOnce: true });
-    if(navigator.vibrate) navigator.vibrate([50,50,50]);
   }
 
   // ===== REDES SOCIALES =====
@@ -492,11 +609,7 @@
 
   window.compartirApp = function() {
     if(navigator.share) {
-      navigator.share({
-        title: 'EclipseMC',
-        text: 'Descarga los mejores mods para Minecraft!',
-        url: window.location.href
-      });
+      navigator.share({ title: 'EclipseMC', text: 'Descarga los mejores mods para Minecraft!', url: window.location.href });
     } else {
       navigator.clipboard.writeText(window.location.href);
       alert('¡Enlace copiado!');
@@ -507,8 +620,13 @@
   if(localStorage.getItem('eclipseCookies')) {
     document.getElementById('cookiesScreen').classList.add('hidden');
     document.getElementById('app').classList.remove('hidden');
-    cargarMods();
+    iniciarApp();
     cargarFavoritos();
+  }
+
+  // Cerrar modal tocando fuera
+  window.onclick = (e) => {
+    if (e.target.classList.contains('modal')) e.target.classList.remove('active');
   }
 </script>
 </body>
